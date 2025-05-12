@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 const ClientAccessButton: React.FC<{ isAuthenticated: boolean; userRole?: string }> = ({ isAuthenticated, userRole }) => {
   const getDashboardPath = () => {
     switch (userRole) {
@@ -10,9 +8,13 @@ const ClientAccessButton: React.FC<{ isAuthenticated: boolean; userRole?: string
     }
   };
 
+  const targetUrl = isAuthenticated
+    ? `http://localhost:5174${getDashboardPath()}`
+    : 'http://localhost:5174/login';
+
   return (
-    <Link
-      to={isAuthenticated ? getDashboardPath() : "/login"}
+    <a
+      href={targetUrl}
       className={`
         inline-block
         font-semibold
@@ -25,8 +27,8 @@ const ClientAccessButton: React.FC<{ isAuthenticated: boolean; userRole?: string
         hover:shadow-button-hover
       `}
     >
-      {isAuthenticated ? "Mi Dashboard" : "Acceso Clientes"}
-    </Link>
+      {isAuthenticated ? 'Mi Dashboard' : 'Acceso Clientes'}
+    </a>
   );
 };
 

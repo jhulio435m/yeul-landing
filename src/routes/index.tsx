@@ -15,17 +15,6 @@ import ContactPage from '../pages/public/ContactPage';
 import BlogPostPage from "../pages/public/BlogPostPage";
 import ProjectDetailPage from '../pages/public/ProjectDetailPage';
 
-// Auth Pages
-import LoginPage from '../pages/auth/LoginPage';
-import RegisterPage from '../pages/auth/RegisterPage';
-import ProjectValidationPage from '../pages/auth/ProjectValidationPage';
-
-// Private Pages
-import ClientDashboardPage from '../pages/private/client/ClientDashboardPage';
-import ProjectExpedientPage from '../pages/private/client/ProjectExpedientPage';
-import EngineerDashboardPage from '../pages/private/engineer/EngineerDashboardPage';
-import AdminDashboardPage from '../pages/private/admin/AdminDashboardPage';
-
 const PrivateRoute = ({ children, allowedRoles }: { children: JSX.Element, allowedRoles?: string[] }) => {
   const { isAuthenticated, currentUser } = useAuth();
   
@@ -61,41 +50,6 @@ const AppRoutes = () => {
         <Route path="blog/:id" element={<BlogPostPage />} />
         <Route path="contacto" element={<ContactPage />} />
       </Route>
-
-      {/* Auth Routes */}
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/validar-proyecto" element={
-        <PrivateRoute>
-          <ProjectValidationPage />
-        </PrivateRoute>
-      } />
-
-      {/* Private Routes */}
-      <Route path="/dashboard" element={<PrivateLayout />}>
-        <Route path="client" element={
-          <PrivateRoute allowedRoles={['client']}>
-            <ClientDashboardPage />
-          </PrivateRoute>
-        } />
-        <Route path="client/project/:id" element={
-          <PrivateRoute allowedRoles={['client']}>
-            <ProjectExpedientPage />
-          </PrivateRoute>
-        } />
-        <Route path="engineer" element={
-          <PrivateRoute allowedRoles={['engineer']}>
-            <EngineerDashboardPage />
-          </PrivateRoute>
-        } />
-        <Route path="admin" element={
-          <PrivateRoute allowedRoles={['admin']}>
-            <AdminDashboardPage />
-          </PrivateRoute>
-        } />
-      </Route>
-
-      {/* Fallback Route */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
