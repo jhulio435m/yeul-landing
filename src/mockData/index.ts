@@ -11,7 +11,7 @@ export const users: User[] = [
   {
     id: '2',
     name: 'Ana Rodriguez',
-    email: 'perrosinprepucio@gmail.com',
+    email: 'miembro@gmail.com',
     role: 'engineer',
     avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600'
   },
