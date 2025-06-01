@@ -3,7 +3,7 @@ import { Search, Calendar, Filter, FileBarChart, DownloadCloud as CloudDownload,
 import { projects } from '../../../mockData';
 import ProjectCard from '../../../components/private/client/ProjectCard';
 
-const ClientDashboardPage = () => {
+const ClientDocumentsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('all');
 
