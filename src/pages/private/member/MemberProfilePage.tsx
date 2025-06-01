@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Building2, Users, Settings, Plus, Search } from 'lucide-react';
 import SectionHeading from '../../../components/common/SectionHeading';
 
-const MemberDashboardPage = () => {
+const MemberProfilePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Mock data for consulting firms
@@ -94,4 +94,4 @@ const MemberDashboardPage = () => {
   );
 };
 
-export default MemberDashboardPage;
+export default MemberProfilePage;
