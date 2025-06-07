@@ -1,20 +1,21 @@
+import { Link } from 'react-router-dom';
+
 const ClientAccessButton: React.FC<{ isAuthenticated: boolean; userRole?: string }> = ({ isAuthenticated, userRole }) => {
   const getDashboardPath = () => {
     switch (userRole) {
       case 'admin': return '/dashboard/admin';
       case 'engineer': return '/dashboard/engineer';
+      case 'member': return '/dashboard/member';
       case 'client': return '/dashboard/client';
       default: return '/dashboard/client';
     }
   };
 
-  const targetUrl = isAuthenticated
-    ? `http://localhost:5174${getDashboardPath()}`
-    : 'http://localhost:5174/login';
+  const targetPath = isAuthenticated ? getDashboardPath() : '/login';
 
   return (
-    <a
-      href={targetUrl}
+    <Link
+      to={targetPath}
       className={`
         inline-block
         font-semibold
@@ -28,7 +29,7 @@ const ClientAccessButton: React.FC<{ isAuthenticated: boolean; userRole?: string
       `}
     >
       {isAuthenticated ? 'Mi Dashboard' : 'Acceso Clientes'}
-    </a>
+    </Link>
   );
 };
 

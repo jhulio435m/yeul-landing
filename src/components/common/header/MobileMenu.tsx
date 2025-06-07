@@ -6,10 +6,13 @@ const MobileMenu: React.FC<{ isAuthenticated: boolean; userRole?: string }> = ({
     switch (userRole) {
       case 'admin': return '/dashboard/admin';
       case 'engineer': return '/dashboard/engineer';
+      case 'member': return '/dashboard/member';
       case 'client': return '/dashboard/client';
       default: return '/dashboard/client';
     }
   };
+
+  const targetPath = isAuthenticated ? getDashboardPath() : '/login';
 
   return (
     <div className="md:hidden bg-white dark:bg-gray-800 rounded-lg mt-4 py-5 px-4 shadow-xl animate-slide-down transition-all duration-300 ease-in-out">
@@ -26,7 +29,7 @@ const MobileMenu: React.FC<{ isAuthenticated: boolean; userRole?: string }> = ({
 
         <div className="pt-3 border-t border-gray-200 dark:border-gray-700 mt-4">
           <Link
-            to={isAuthenticated ? getDashboardPath() : "/login"}
+            to={targetPath}
             className={`
               block w-full text-center
               bg-yellow-500 hover:bg-yellow-400
