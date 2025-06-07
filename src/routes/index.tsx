@@ -43,11 +43,11 @@ const PrivateRoute = ({ children, allowedRoles }: { children: JSX.Element, allow
   
   if (allowedRoles && currentUser && !allowedRoles.includes(currentUser.role)) {
     if (currentUser.role === 'client') {
-      return <Navigate to="/dashboard/client" replace />;
+      return <Navigate to="/dashboard/client\" replace />;
     } else if (currentUser.role === 'member') {
       return <Navigate to="/dashboard/member" replace />;
     } else if (currentUser.role === 'admin') {
-      return <Navigate to="/dashboard/admin" replace />;
+      return <Navigate to="/dashboard/admin\" replace />;
     }
   }
   
@@ -107,7 +107,7 @@ const AppRoutes = () => {
         <Route path="profile" element={<ClientProfilePage />} />
       </Route>
 
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<Navigate to="/\" replace />} />
     </Routes>
   );
 };
